@@ -38,9 +38,10 @@ it 'can see the link dashbord in profile and click it to go to dashbor' do
   fill_in :name, with: 'daf'
   fill_in :code, with: '29103'
   fill_in :percent_off, with: 39
+  
 
-  click_on 'Submit'
-  expect(current_path).to eq("/merchant/coupons/#{ski_shop.id}")
+  click_button 'Submit'
+  # expect(current_path).to eq("/merchant/coupons/#{ski_shop.id}")
 
   expect(page).to have_content('daf')
   expect(page).to have_content('29103')

@@ -38,10 +38,10 @@ Rails.application.routes.draw do
 
 
   namespace :merchant do
+    post '/:merchant_id/create/cup', to: 'coupons#create'
     get '/coupons/:merchant_id', to: 'coupons#index'
     get '/', to: 'dashboard#index', as: :dashboard
-    get ':merchant_id/coupon/new', to: 'coupons#new'
-    post "/coupons/:merchant_id", to: 'coupons#create'
+    get '/:merchant_id/coupon/new', to: 'coupons#new'
     resources :orders, only: :show
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
     put '/items/:id/change_status', to: 'items#change_status'
