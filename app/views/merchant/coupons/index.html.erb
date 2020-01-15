@@ -1,0 +1,10 @@
+<h1>Coupons</h1>
+<% @merchant.coupons.each do |cup| %>
+  <%= cup.name %>
+  <%= cup.code %>
+  <%= cup.percent_off %>
+  <br>
+  <%= link_to 'Delete' "/coupons/#{cup.id}/delete", method: :delete %>
+  <%= link_to 'Update' "/coupons/#{cup.id}/update", method: :patch %>
+<% end %>
+<%= link_to 'New', "/merchant/#{@merchant.id}/coupon/new" %>

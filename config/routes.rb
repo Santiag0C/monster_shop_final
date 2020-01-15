@@ -30,12 +30,18 @@ Rails.application.routes.draw do
   get '/profile/orders/:id', to: 'user/orders#show'
   delete '/profile/orders/:id', to: 'user/orders#cancel'
 
+  get '/merchant/:id/dashboard', to: 'users#dashboard'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
 
+
   namespace :merchant do
+    get '/coupons/:merchant_id', to: 'coupons#index'
     get '/', to: 'dashboard#index', as: :dashboard
+    get ':merchant_id/coupon/new', to: 'coupons#new'
+    post "/coupons/:merchant_id", to: 'coupons#create'
     resources :orders, only: :show
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
     put '/items/:id/change_status', to: 'items#change_status'

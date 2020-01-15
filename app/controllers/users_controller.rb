@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+
   end
 
   def new
@@ -39,6 +40,10 @@ class UsersController < ApplicationController
       generate_flash(@user)
       render :edit
     end
+  end
+
+  def dashboard
+    @user = current_user
   end
 
   private

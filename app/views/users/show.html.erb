@@ -3,3 +3,6 @@
 <%= link_to 'Change Password', '/profile/edit_password' %>
 
 <%= link_to 'My Orders', '/profile/orders' %>
+<% if @user.role == "merchant_admin" %>
+  <%= link_to 'Dashbord', "/merchant/#{@user.merchant.id}/dashboard" %>
+<% end %>
